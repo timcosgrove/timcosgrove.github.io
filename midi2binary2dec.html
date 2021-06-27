@@ -1,0 +1,127 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Midi notes to bitmask to base 10</title>
+  <style>
+    .readable {
+      font-size: 24px;
+    }
+    .strong {
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+  <p id="instructions">This is intended for use with <a href="https://llllllll.co/t/teletype-4-0-0-beta-2-new-june-20-ready-for-testing/45871" target="_blank">Teletype 4.0's</a> binary scale ops.
+    If you have a MIDI keyboard connected, you should be able to play notes and generate the appropriate bitmask for those notes.<br /><br />
+  For example, if you play a C major chord, the base 10 bitmask should show "145". You could then do something like this in Teletype:
+<pre>
+  N.BX 0 0 145;
+  JF.NOTE N.BX 0 RND 7 V 5;
+</pre>
+This would assign the C major chord "scale" to scale index 1, and then play a random note in the chord over two octaves on Just Friends.
+</p>
+  <div class="readable" id="activeNoteNumbers">active notes:</div>
+  <div class="readable" id="pitchClasses">pitch classes:</div>
+  <div class="readable" id="binary">reverse bitmask:</div>
+  <div class="readable strong" id="reversebinary">base 10 bitmask:</div>
+
+
+
+<script>
+  var midi, data;
+// request MIDI access
+if (navigator.requestMIDIAccess) {
+    navigator.requestMIDIAccess({
+        sysex: false
+    }).then(onMIDISuccess, onMIDIFailure);
+} else {
+    noMidiMessage();
+}
+
+// midi functions
+function onMIDISuccess(midiAccess) {
+    // when we get a succesful response, run this code
+    midi = midiAccess; // this is our raw MIDI data, inputs, outputs, and sysex status
+
+    var inputs = midi.inputs.values();
+    // loop over all available inputs and listen for any MIDI input
+    for (var input = inputs.next(); input && !input.done; input = inputs.next()) {
+        // each time there is a midi message call the onMIDIMessage function
+        input.value.onmidimessage = onMIDIMessage;
+    }
+}
+
+function onMIDIFailure(error) {
+    // when we get a failed response, run this code
+    noMidiMessage();
+}
+var activeNotes = {};
+function onMIDIMessage(message) {
+    data = message.data; // this gives us our [command/channel, note, velocity] data.
+    cmd = data[0] >> 4;
+    channel = data[0] & 0xf;
+    type = data[0] & 0xf0;
+    note = data[1];
+    switch (type) {
+      case 144:
+        activeNotes[note] = true;
+        updateNotes();
+        break;
+      case 128:
+        activeNotes[note] = false;
+        updateNotes();
+        break;
+    }
+}
+function updateNotes() {
+  let actualNotes = [];
+  let bitMask = [];
+  let pitchClasses = [
+    'C',
+    'C#',
+    'D',
+    'D#',
+    'E',
+    'F',
+    'F#',
+    'G',
+    'G#',
+    'A',
+    'A#',
+    'B',
+  ];
+  let activePitchClasses = [];
+  for (const note in activeNotes) {
+    if (activeNotes[note] == true) {
+      actualNotes.push(note % 12);
+      actualNotes.sort(function(a, b) {
+        return a - b;
+      });
+    }
+  }
+  actualNotes = actualNotes.filter(onlyUnique);
+  for (var i = 0; i < 12; i++) {
+    bitMask.push(actualNotes.includes(i) ? 1 : 0);
+    if (actualNotes.includes(i)) {
+      activePitchClasses.push(pitchClasses[i]);
+    }
+  }
+  document.getElementById('activeNoteNumbers').innerHTML = "active notes: " + actualNotes.join(", ");
+  document.getElementById('pitchClasses').innerHTML = "pitch classes: " + activePitchClasses.join(", ");
+  document.getElementById('binary').innerHTML = "reverse bitmask: " + bitMask.join('');
+  document.getElementById('reversebinary').innerHTML = "base 10 bitmask: " + parseInt(bitMask.reverse().join(''), 2);
+}
+function onlyUnique(value, index, self) {
+  return self.indexOf(value) === index;
+}
+function noMidiMessage() {
+  document.getElementById('instructions').innerHTML = 'This browser does not support WEB MIDI API. Please use a <a href="https://caniuse.com/midi">browser that supports Web MIDI API</a>.';
+}
+</script>
+</body>
+</html>
