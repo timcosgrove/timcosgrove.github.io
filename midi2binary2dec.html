@@ -13,9 +13,19 @@
     .strong {
       font-weight: 700;
     }
+    #warning {
+      display:none;
+      font-weight: 700;
+      font-size: 30px;
+      color: darkred;
+    }
+    #warning.visible {
+      display: block;
+    }
   </style>
 </head>
 <body>
+  <p id="warning">This browser does not support WEB MIDI API. Please use a <a href="https://caniuse.com/midi">browser that supports Web MIDI API</a>.</p>
   <p id="instructions">This is intended for use with <a href="https://llllllll.co/t/teletype-4-0-0-beta-2-new-june-20-ready-for-testing/45871" target="_blank">Teletype 4.0's</a> binary scale ops.
     If you have a MIDI keyboard connected, you should be able to play notes and generate the appropriate bitmask for those notes.<br /><br />
   For example, if you play a C major chord, the base 10 bitmask should show "145". You could then do something like this in Teletype:
@@ -120,7 +130,7 @@ function onlyUnique(value, index, self) {
   return self.indexOf(value) === index;
 }
 function noMidiMessage() {
-  document.getElementById('instructions').innerHTML = 'This browser does not support WEB MIDI API. Please use a <a href="https://caniuse.com/midi">browser that supports Web MIDI API</a>.';
+  document.getElementById('warning').setAttribute('class', 'visible');
 }
 </script>
 </body>
