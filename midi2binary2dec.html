@@ -27,6 +27,10 @@
       padding: 20px;
       background-color: pink;
     }
+    pre {
+      padding: 20px;
+      background-color: lightgray;
+    }
   </style>
 </head>
 <body>
@@ -48,6 +52,31 @@
 </pre>
 This would assign the C major chord "scale" to scale index 1, and then play a random note in the chord over two octaves on Just Friends.
 </p>
+<p>Note that you can get this information entirely from Teletype, as well, if you plug a MIDI keyboard into it, using a scene like this:</p>
+<pre>
+  MIDI 2 DECIMAL
+
+  DECIMAL: %1
+  RBINARY: R%R2
+
+
+
+  #1
+  L 1 MI.NL: $ 2
+
+  #2
+  A BSET A % MI.N 12
+  PRINT 1 A
+  PRINT 2 A
+
+  #3
+  L 1 MI.OL: $ 4
+
+  #4
+  A BCLR A % MI.O 12
+  PRINT 1 A
+  PRINT 2 A
+</pre>
 
 
 
