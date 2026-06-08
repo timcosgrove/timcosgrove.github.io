@@ -16,3 +16,5 @@ menus:
   - name: Tags
     pageRef: /tags
     weight: 30
+
+publishDir: docs
