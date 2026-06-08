@@ -3,6 +3,7 @@ date: '2026-06-08T09:32:38-07:00'
 draft: false
 title: 'Containers, self-reliance vs. community, doing'
 tags: [writing, meta]
+summary: 'First post: what I am doing here, and small thoughts about the tensions between self-reliance and the necessity of relying on systems larger than yourself.'
 ---
 Ah, it's the "Hello, World!" post. Until recently I was employed working as a technical lead / engineering manager for a team working on [VA.gov](https://va.gov). I was there for nearly 5 years, and I was grateful for the opportunity to do paid work for something that I viewed as having purpose or being on some level for the public good. How that worked out is a story for another time. I have decided that it is time for a work break, and I am on my own for the moment, working on what I am interested in. 
 
