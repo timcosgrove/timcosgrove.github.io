@@ -17,4 +17,6 @@ menus:
     pageRef: /tags
     weight: 30
 
-publishDir: docs
+caches:
+  images:
+    dir: :cacheDir/images
