@@ -1,5 +1,5 @@
 ---
-date: '2026-06-08T012:12:38-07:00'
+date: '2026-06-08T12:12:38-07:00'
 draft: false
 title: 'Posting from the world'
 tags: [meta]
