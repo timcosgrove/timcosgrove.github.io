@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Writing on Tim Cosgrove</title>
+		<link>http://localhost:1313/tags/writing/</link>
+		<description>Recent content in Writing on Tim Cosgrove</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Mon, 08 Jun 2026 09:32:38 -0700</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/tags/writing/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Containers, self-reliance vs. community, doing</title>
+				<link>http://localhost:1313/posts/containers/</link>
+				<pubDate>Mon, 08 Jun 2026 09:32:38 -0700</pubDate>
+				<guid>http://localhost:1313/posts/containers/</guid>
+				<description>&lt;p&gt;Ah, it&amp;rsquo;s the &amp;ldquo;Hello, World!&amp;rdquo; post. Until recently I was employed working as a technical lead / engineering manager for a team working on &lt;a href=&#34;https://va.gov&#34;&gt;VA.gov&lt;/a&gt;. I was there for nearly 5 years, and I was grateful for the opportunity to do paid work for something that I viewed as having purpose or being on some level for the public good. How that worked out is a story for another time. I have decided that it is time for a work break, and I am on my own for the moment, working on what I am interested in.&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>
