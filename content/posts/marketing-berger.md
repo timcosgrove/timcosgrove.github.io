@@ -2,7 +2,7 @@
 date: '2026-06-09T10:07:06-07:00'
 draft: true
 title: 'John Berger on marketing'
-tags: ["reading"]
+tags: ["quotes"]
 summary: 'John Berger discussing marketing in *Ways of Seeing*'
 ---
 On marketing:
