@@ -1,8 +1,6 @@
 :root {
-  /* Step 1: Tell the browser the site supports both modes */
   color-scheme: light dark;
 
-  /* Step 2: Define your theme variables */
   --bg-color: light-dark(#ffffff, #222222);
   --text-color: light-dark(#222222, #ffffff);
   --link-color: light-dark(#1d7c2b, #66e078);
