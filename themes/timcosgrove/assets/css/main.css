@@ -1,8 +1,19 @@
+:root {
+  /* Step 1: Tell the browser the site supports both modes */
+  color-scheme: light dark;
+
+  /* Step 2: Define your theme variables */
+  --bg-color: light-dark(#ffffff, #222222);
+  --text-color: light-dark(#222222, #ffffff);
+  --link-color: light-dark(#1d7c2b, #66e078);
+}
+
 @import "components/header.css";
 @import "components/footer.css";
 
 body {
-  color: #222;
+  background-color: var(--bg-color);
+  color: var(--color);
   font-family: sans-serif;
   line-height: 1.5;
   margin: 1rem;
@@ -10,5 +21,5 @@ body {
 }
 
 a {
-  color: rgb(29, 124, 43);
+  color: var(--link-color);
 }
