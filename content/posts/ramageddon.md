@@ -1,6 +1,6 @@
 ---
 date: '2026-06-26T22:07:29-07:00'
-draft: true
+draft: false
 title: 'RAMageddon and loss of ownership'
 tags: ['small thoughts']
 summary: 'The RAM shortage will force people to rely on cloud/networked services more heavily which is a vector of extraction and control.'
